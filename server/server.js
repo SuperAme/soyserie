@@ -44,6 +44,21 @@ app.post('/series/add', (req,res) => {
     })
 })
 
+app.post("/Series/borrar/:titulo", (req,res)=>{
+    const titulo = req.params.titulo
+    //console.log(titulo)
+    Serie.findOneAndDelete({'titulo':titulo}).then(datos =>{
+        res.send(datos)
+    })
+})
+
+app.post("/Series/actualizar/:titulo", (req,res) =>{
+    const titulo = req.params.titulo    
+    Serie.findOneAndUpdate(req.body).then(datos=>{
+      res.send(datos)
+    })
+  })
+
 
 app.post('/soyserie/resena', (req, res) => {
     const resena = new Resena(req.body)
@@ -71,7 +86,7 @@ app.get('/soyserie/resenas', (req, res) => {
     })
 })
 
-app.get("/soyserie/resena/:idresena", (req,res)=>{
+app.get("/soyserie/resena/:idresena", (req,res)=>{titulo
     const idBuscar = req.params.idresena
     console.log(idBuscar)
     Resena.find({'idresena': idBuscar}).then(datos =>{
