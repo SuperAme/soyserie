@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const SALT_I = 10
 const jwt = require('jsonwebtoken')
 const {Serie} = require('../server/models/Serie')
-const port = process.env.PORT || 3002
+const port = process.env.PORT || 3001
 
 require('dotenv').config()
 
@@ -40,4 +40,12 @@ app.post('/series/add', (req,res) => {
         })
     })
 })
+
+/*app.put('/:id',async(req,res) => {
+    const updateSerie = new Serie(req.body)
+    await Task.findByIdAndUpdate(req.body,updateSerie)
+    res.json({succes:true})
+})*/
+
+
 
